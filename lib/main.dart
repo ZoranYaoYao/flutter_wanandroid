@@ -6,6 +6,7 @@ import 'package:flutter_wanandroid/ui/pages/main_page.dart';
 import 'package:flutter_wanandroid/ui/pages/page_index.dart';
 import 'package:auto_size/auto_size.dart';
 
+/// zqs: 通过设置runAutoSizeApp width height ，字体会变化大小适配全屏
 void main() => runAutoSizeApp(BlocProvider<ApplicationBloc>(
       bloc: ApplicationBloc(),
       child: BlocProvider(child: MyApp(), bloc: MainBloc()),
@@ -85,6 +86,8 @@ class MyAppState extends State<MyApp> {
       routes: {
         BaseConstant.routeMain: (ctx) => MainPage(),
       },
+
+      /// Splash 页面(闪屏页，启动页)
       home: new SplashPage(),
       theme: ThemeData.light().copyWith(
         primaryColor: _themeColor,
