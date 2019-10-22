@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
 
+/// 逻辑一： 引导界面
+/// 显示splash图片 =》 显示4张引导界面 =》 立即体验
+/// 逻辑二： 闪屏界面
+/// 显示splash图片 && 跳过3秒显示
 class SplashPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +24,7 @@ class SplashPageState extends State<SplashPage> {
 
   List<Widget> _bannerList = new List();
 
-  int _status = 0;
+  int _status = 0; // 1-闪屏界面跳过3秒，2-引导界面
   int _count = 3;
 
   SplashModel _splashModel;
@@ -61,11 +65,13 @@ class SplashPageState extends State<SplashPage> {
           });
         }
       } else {
+        //nice 网络跟新本地缓存
         SpHelper.putObject(Constant.key_splash_model, null);
       }
     });
   }
 
+  /// 引导界面的 Banner 横幅
   void _initBanner() {
     _initBannerData();
     setState(() {
@@ -73,9 +79,11 @@ class SplashPageState extends State<SplashPage> {
     });
   }
 
+  /// 初始化引导界面的banner
   void _initBannerData() {
     for (int i = 0, length = _guideList.length; i < length; i++) {
       if (i == length - 1) {
+        /// 最后一页添加 "立即体验 CircleAvatar"
         _bannerList.add(new Stack(
           children: <Widget>[
             new Image.asset(
@@ -88,6 +96,10 @@ class SplashPageState extends State<SplashPage> {
               alignment: Alignment.bottomCenter,
               child: new Container(
                 margin: EdgeInsets.only(bottom: 160.0),
+
+                /// 墨水瓶，
+                /// 我们希望在点击时将水波动画添加到Widgets。 Flutter提供了InkWellWidget来实现这个效果
+                /// https://flutterchina.club/cookbook/gestures/ripples/
                 child: new InkWell(
                   onTap: () {
                     _goMain();
@@ -120,6 +132,7 @@ class SplashPageState extends State<SplashPage> {
     }
   }
 
+  /// 开机的闪屏界面
   void _initSplash() {
     if (_splashModel == null) {
       _goMain();
@@ -165,7 +178,8 @@ class SplashPageState extends State<SplashPage> {
       );
     }
     return new Offstage(
-      offstage: !(_status == 1),
+      offstage: _status != 1,
+      // 墨水池
       child: new InkWell(
         onTap: () {
           if (ObjectUtil.isEmpty(_splashModel.url)) return;
@@ -193,12 +207,14 @@ class SplashPageState extends State<SplashPage> {
     return new Material(
       child: new Stack(
         children: <Widget>[
+          /// Offstage的作用很简单，通过一个参数，来控制child是否显示，日常使用中也算是比较常用的控件。
           new Offstage(
-            offstage: !(_status == 0),
+            offstage: _status != 0,
             child: _buildSplashBg(),
           ),
+          // 4张图的引导界面
           new Offstage(
-            offstage: !(_status == 2),
+            offstage: _status != 2,
             child: ObjectUtil.isEmpty(_bannerList)
                 ? new Container()
                 : new Swiper(
@@ -213,7 +229,7 @@ class SplashPageState extends State<SplashPage> {
           ),
           _buildAdWidget(),
           new Offstage(
-            offstage: !(_status == 1),
+            offstage: _status != 1,
             child: new Container(
               alignment: Alignment.bottomRight,
               margin: EdgeInsets.all(20.0),
