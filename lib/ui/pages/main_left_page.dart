@@ -164,12 +164,14 @@ class _MainLeftPageState extends State<MainLeftPage> {
           new Expanded(
             child: new ListView.builder(
                 padding: const EdgeInsets.all(0.0),
+                // ListView 添加item总数
                 itemCount: _pageInfo.length,
                 itemBuilder: (BuildContext context, int index) {
                   PageInfo pageInfo = _pageInfo[index];
                   return new ListTile(
                     leading: new Icon(pageInfo.iconData),
                     title: Text(IntlUtil.getString(context, pageInfo.titleId)),
+                    // 点击跳转
                     onTap: () {
                       if (pageInfo.titleId == Ids.titleSignOut) {
                         _showLoginOutDialog(context);

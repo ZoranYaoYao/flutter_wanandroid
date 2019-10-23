@@ -16,6 +16,7 @@ class NavigatorUtil {
       pushPage(context, UserLoginPage());
       return;
     }
+    /// zqs_nice2: 通过push(context,CupertinoPageRoute()) 传递widget，进行路由！！
     Navigator.push(
         context, new CupertinoPageRoute<void>(builder: (ctx) => page));
   }
