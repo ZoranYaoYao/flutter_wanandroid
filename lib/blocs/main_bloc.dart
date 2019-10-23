@@ -72,7 +72,10 @@ class MainBloc implements BlocBase {
 
   ///****** ****** ****** Version ****** ****** ****** /
 
-  BehaviorSubject<VersionModel> _version = BehaviorSubject<VersionModel>();
+  /// zqs_nice5: BehaviorSubject(Rxdart类), 只缓存最近的一条记录！
+  /// https://juejin.im/post/5bcea438e51d4536c65d2232
+  BehaviorSubject<VersionModel> _version =
+      BehaviorSubject<VersionModel>(); // 1.BehaviorSubject 创建 BehaviorSubject（）
 
   Sink<VersionModel> get _versionSink => _version.sink;
 
@@ -305,7 +308,7 @@ class MainBloc implements BlocBase {
   Future getVersion() async {
     httpUtils.getVersion().then((model) {
       _versionModel = model;
-      _versionSink.add(_versionModel);
+      _versionSink.add(_versionModel); //2.BehaviorSubject 获取Subject的sink并且进行添加
     });
   }
 

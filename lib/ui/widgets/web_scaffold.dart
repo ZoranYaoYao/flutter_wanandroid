@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/common/component_index.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:share/share.dart';
 
+// WebView界面
 class WebScaffold extends StatefulWidget {
   const WebScaffold({
     Key key,
@@ -29,12 +30,14 @@ class WebScaffoldState extends State<WebScaffold> {
     String _title = widget.title ?? IntlUtil.getString(context, widget.titleId);
     switch (value) {
       case "browser":
+        // 启动外挑url的app 使用三方库
         NavigatorUtil.launchInBrowser(widget.url, title: _title);
         break;
       case "collection":
         break;
       case "share":
         String _url = widget.url;
+        // 分享流程 使用三方库
         Share.share('$_title : $_url');
         break;
       default:
@@ -64,9 +67,11 @@ class WebScaffoldState extends State<WebScaffold> {
               itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
                     new PopupMenuItem<String>(
                         value: "browser",
+                        /// ListTile控件 丰富的原生控件，常用语ListView充当Item
+                        /// https://juejin.im/post/5c88d6c4f265da2de970bc24
                         child: ListTile(
                             contentPadding: EdgeInsets.all(0.0),
-                            dense: false,
+                            dense: false, // 非密集型，作用字体相对较大
                             title: new Container(
                               alignment: Alignment.center,
                               child: new Row(

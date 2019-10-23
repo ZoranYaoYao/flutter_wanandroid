@@ -55,6 +55,7 @@ class NavigatorUtil {
                 )));
   }
 
+  // 跳转系统自带的游览器
   static Future<Null> launchInBrowser(String url, {String title}) async {
     if (await canLaunch(url)) {
       await launch(url, forceSafariVC: false, forceWebView: false);

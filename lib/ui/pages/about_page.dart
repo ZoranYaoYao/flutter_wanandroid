@@ -53,7 +53,7 @@ class AboutPage extends StatelessWidget {
           new ComArrowItem(github),
           new ComArrowItem(author),
           new StreamBuilder(
-              stream: bloc.versionStream,
+              stream: bloc.versionStream, //3.BehaviorSubject 设置空间的stream, 进行获取输出流出口
               builder:
                   (BuildContext context, AsyncSnapshot<VersionModel> snapshot) {
                 VersionModel model = snapshot.data;

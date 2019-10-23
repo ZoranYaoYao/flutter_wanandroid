@@ -8,8 +8,10 @@ class ComArrowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      // Material控件 可以加圆角
       child: new Material(
         color: Colors.white,
+        /// zqs_nice: ListTile 覆盖trailing的样式效果
         child: new ListTile(
           onTap: () {
             if (model.page == null) {
