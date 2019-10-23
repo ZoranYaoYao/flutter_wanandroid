@@ -67,6 +67,7 @@ class _LanguagePageState extends State<LanguagePage> {
                           ? null
                           : _currentLanguage);
                   bloc.sendAppEvent(Constant.type_sys_update);
+                  // 类比 activity.finish()
                   Navigator.pop(context);
                 },
               ),
@@ -78,6 +79,7 @@ class _LanguagePageState extends State<LanguagePage> {
           itemCount: _list.length,
           itemBuilder: (BuildContext context, int index) {
             LanguageModel model = _list[index];
+            // 列表瓦片
             return new ListTile(
               title: new Text(
                 (model.titleId == Ids.languageAuto
@@ -86,6 +88,7 @@ class _LanguagePageState extends State<LanguagePage> {
                         languageCode: 'zh', countryCode: 'CH')),
                 style: new TextStyle(fontSize: 13.0),
               ),
+              // 单选控件
               trailing: new Radio(
                   value: true,
                   groupValue: model.isSelected == true,

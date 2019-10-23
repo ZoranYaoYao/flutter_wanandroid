@@ -18,6 +18,8 @@ class SettingPage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          /// https://flutterchina.club/catalog/samples/expansion-tile-sample/
+          /// 扩展瓦片，可以进行展开，折叠的控件
           new ExpansionTile(
             title: new Row(
               children: <Widget>[
@@ -34,6 +36,7 @@ class SettingPage extends StatelessWidget {
               ],
             ),
             children: <Widget>[
+              // Wrap: 类比FlexBox，自适应行列空间不足的换行
               new Wrap(
                 children: themeColorMap.keys.map((String key) {
                   Color value = themeColorMap[key];
@@ -53,6 +56,7 @@ class SettingPage extends StatelessWidget {
               )
             ],
           ),
+          // 列表瓦片
           new ListTile(
             title: new Row(
               children: <Widget>[
