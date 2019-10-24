@@ -9,6 +9,7 @@ class CollectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LogUtil.e("ReposPage build...... $labelId");
+    // 下拉刷新控件
     RefreshController _controller = new RefreshController();
     CollectBloc bloc = BlocProvider.of<CollectBloc>(context);
     MainBloc mainBloc = BlocProvider.of<MainBloc>(context);

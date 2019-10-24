@@ -71,6 +71,7 @@ class ReposItem extends StatelessWidget {
                 width: 72,
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 10.0),
+                //三方控件-网络缓存ImageView
                 child: new CachedNetworkImage(
                   width: 72,
                   height: 128,

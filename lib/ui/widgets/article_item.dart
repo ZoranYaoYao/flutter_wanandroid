@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
 
+// 收藏列表-文章Item
 class ArticleItem extends StatelessWidget {
   const ArticleItem(
       this.model, {
@@ -17,6 +18,7 @@ class ArticleItem extends StatelessWidget {
     return new InkWell(
       onTap: () {
         //LogUtil.e("ReposModel: " + model.toString());
+        // 跳转webView 界面
         NavigatorUtil.pushWeb(context,
             title: model.title, url: model.link, isHome: isHome);
       },

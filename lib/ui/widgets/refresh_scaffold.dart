@@ -4,6 +4,7 @@ import 'package:flutter_wanandroid/common/component_index.dart';
 typedef void OnLoadMore(bool up);
 typedef OnRefreshCallback = Future<void> Function({bool isReload});
 
+// 下拉刷新，上拉加载ListView控件
 class RefreshScaffold extends StatefulWidget {
   const RefreshScaffold(
       {Key key,
@@ -83,7 +84,10 @@ class RefreshScaffoldState extends State<RefreshScaffold>
     return new Scaffold(
         body: new Stack(
           children: <Widget>[
+            // RefreshIndicator
+            // https://www.webascii.cn/article/473
             new RefreshIndicator(
+                // 三方下来控件
                 child: new SmartRefresher(
                     controller: widget.controller,
                     enablePullDown: false,
