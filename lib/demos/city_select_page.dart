@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:lpinyin/lpinyin.dart';
 
+// zqs_nice:继承ISuspensionBean，并在第一个不同字母时，设置isShowSuspension = true
 class CityInfo extends ISuspensionBean {
   String name;
   String tagIndex;
@@ -52,6 +53,7 @@ class _CitySelectPageState extends State<CitySelectPage> {
 
   int _suspensionHeight = 40;
   int _itemHeight = 50;
+  // 当前悬挂的Tag
   String _suspensionTag = "";
 
   @override
@@ -127,6 +129,7 @@ class _CitySelectPageState extends State<CitySelectPage> {
     return Column(
       children: <Widget>[
         Offstage(
+          // offstage 离开舞台 = true时，不显示控件
           offstage: !(model.isShowSuspension == true),
           child: _buildSusWidget(model.getSuspensionTag()),
         ),
@@ -164,8 +167,8 @@ class _CitySelectPageState extends State<CitySelectPage> {
                 child: new AzListView(
                   data: _cityList,
                   topData: _hotCityList,
-                  itemBuilder: (context, model) => _buildListItem(model),
-                  suspensionWidget: _buildSusWidget(_suspensionTag),
+                  itemBuilder: (context, model) => _buildListItem(model), // 正常列表
+                  suspensionWidget: _buildSusWidget(_suspensionTag), // 悬挂item
                   isUseRealIndex: true,
                   itemHeight: _itemHeight,
                   suspensionHeight: _suspensionHeight,
