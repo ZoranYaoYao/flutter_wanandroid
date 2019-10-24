@@ -44,6 +44,7 @@ class _PinyinPage extends State<PinyinPage> {
     }
   }
 
+  /// zqs_nice: PinyinHelper ChineseHelper 进行汉字拼音转换工具类
   void convertToPinyin(String text) {
     switch (_convertType) {
       case TYPE_PINYIN:
@@ -99,6 +100,7 @@ class _PinyinPage extends State<PinyinPage> {
                                   _convertType == TYPE_PINYIN),
                               onChanged: (value) {
                                 if (value) {
+                                  // zqs_nice: 通过setState去刷新value来进行单选框群组
                                   setState(() {
                                     _convertType = TYPE_PINYIN;
                                     _pinyinFormat = PinyinFormat.WITH_TONE_MARK;
@@ -204,6 +206,7 @@ class _PinyinPage extends State<PinyinPage> {
                 ),
                 new Container(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  // TextField 类比EditText
                   child: new TextField(
                     controller: controller,
                     autofocus: false,
