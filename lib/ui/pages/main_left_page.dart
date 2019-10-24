@@ -183,6 +183,7 @@ class _MainLeftPageState extends State<MainLeftPage> {
                               bloc: new CollectBloc(),
                             ),
                             pageName: pageInfo.titleId,
+                            // 收藏需要登录
                             needLogin: Utils.isNeedLogin(pageInfo.titleId));
                       } else {
                         NavigatorUtil.pushPage(context, pageInfo.page,

@@ -13,6 +13,7 @@ class UserRepository {
       return Future.error(baseResp.msg);
     }
     baseResp.response.headers.forEach((String name, List<String> values) {
+      /// zqs_nice9: set-cookie 服务器发送cookie缓存，cookie里面放的是用户Token
       if (name == "set-cookie") {
         String cookie = values.toString();
         LogUtil.e("set-cookie: " + cookie);
