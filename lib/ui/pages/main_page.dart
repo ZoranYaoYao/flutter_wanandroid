@@ -48,6 +48,7 @@ class MainPage extends StatelessWidget {
             ],
           ),
           body: new TabBarViewLayout(),
+          // 左抽屉效果
           drawer: new Drawer(
             child: new MainLeftPage(),
           ),

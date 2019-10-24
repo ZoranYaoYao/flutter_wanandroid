@@ -41,6 +41,7 @@ class _MainLeftPageState extends State<MainLeftPage> {
   }
 
   void _showLoginOutDialog(BuildContext context) {
+    // showDialog 显示material对话框
     showDialog(
         context: context,
         builder: (ctx) {
