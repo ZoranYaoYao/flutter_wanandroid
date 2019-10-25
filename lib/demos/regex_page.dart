@@ -37,6 +37,7 @@ class _RegexUtilPageState extends State<RegexUtilPage> {
     regexType = regexMobileSimple;
   }
 
+  // zqs 常规的正则表达式
   void inputCheck(String input) {
     _inputText = input;
     bool isCorrent = false;
