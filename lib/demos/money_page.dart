@@ -44,6 +44,7 @@ class _MoneyPageState extends State<MoneyPage> {
 
   void inputCheck() {
     setState(() {
+      // 封装数字精度计算 元，角，分 数字之间的换算，以及动态添加单位
       _checkResult = MoneyUtil.changeFStr2YWithUnit(_inputText,
           format: moneyFormat, unit: moneyUnit);
     });
@@ -76,7 +77,9 @@ class _MoneyPageState extends State<MoneyPage> {
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
+                              // 永远选中
                               value: (true),
+                              // 选中的颜色值
                               activeColor: Colors.red,
                               onChanged: (value) {})
                         ],
