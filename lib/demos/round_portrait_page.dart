@@ -19,6 +19,7 @@ class RoundPortraitPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: new Column(
           children: <Widget>[
+            // https://juejin.im/post/5d6e20f551882550255420e2
             new ClipOval(
               child: new Image.asset(Utils.getImgPath('ali_connors')),
             ),
@@ -40,6 +41,7 @@ class RoundPortraitPage extends StatelessWidget {
                 ),
               ),
             ),
+            // 圆角矩形
             new ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: new Image.asset(Utils.getImgPath('ali_connors')),
@@ -47,6 +49,7 @@ class RoundPortraitPage extends StatelessWidget {
             new Container(
               width: 88.0,
               height: 88.0,
+              // 通过BoxDecoratoin borderRadius 获得圆角矩形
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(6.0),
