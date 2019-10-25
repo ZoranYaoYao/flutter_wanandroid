@@ -69,6 +69,7 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
+    // 回调获取控件的宽高
     widgetUtil.asyncPrepare(context, true, (Rect rect) {
       setState(() {
         mCenterTxt = "width: " +
@@ -108,6 +109,7 @@ class _TestPage2State extends State<TestPage2> {
       child: new InkWell(
         onTap: () {
           setState(() {
+            // 封装获取控件的offset值
             Offset offset = WidgetUtil.getWidgetLocalToGlobal(context);
             contentText = defText + "\n" + "Offset: " + offset.toString();
           });
