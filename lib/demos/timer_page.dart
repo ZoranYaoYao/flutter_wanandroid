@@ -105,6 +105,7 @@ class _TimerPageState extends State<TimerPage> {
                                   mTimerUtil.cancel();
                                   timerBtnTxt = "Start";
                                 } else {
+                                  // 通过封装Timer类型 && 调用Timer.periodic()方法
                                   mTimerUtil.startTimer();
                                   timerBtnTxt = "Stop";
                                 }
@@ -146,6 +147,8 @@ class _TimerPageState extends State<TimerPage> {
                                   mCountDownTimerUtil.cancel();
                                   countDownBtnTxt = "Start";
                                 } else {
+                                  // 原理： Timer.periodic() 总时间-每次tick嘀嗒的时间
+                                  // 如果不足一次嘀嗒的时间 ，则通过延迟剩余时间进行回调
                                   mCountDownTimerUtil.startCountDown();
                                   countDownBtnTxt = "Stop";
                                 }
