@@ -22,6 +22,7 @@ class _DatePageState extends State<DatePage> {
   void inputCheck(DateFormat format) {
     setState(() {
       _checkResult = "Now:    " +
+          // DateTime toString() 直接返回的是yyyy-MM-dd HH:mm:ss.SSS
           DateUtil.getDateStrByMs(
               DateTime.now().millisecondsSinceEpoch,
               format: format) +
@@ -47,7 +48,9 @@ class _DatePageState extends State<DatePage> {
       ),
       body: new Column(
         children: <Widget>[
+          // 类比CardView
           new Card(
+            // 深度
             elevation: 4.0,
             margin: const EdgeInsets.all(10.0),
             child: new Column(
