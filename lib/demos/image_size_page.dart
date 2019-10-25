@@ -39,6 +39,7 @@ class _ImageSizePageState extends State<ImageSizePage> {
 
   void _loadCachedNetworkImage() async {
     Image image = new Image(image: new CachedNetworkImageProvider(netUrl2));
+    // 1.直接通过img.image.addListener() 去监听图片的回调对象Rect
     Rect rect = await WidgetUtil.getImageWH(image: image);
     cacheImgInfo1 =
         "[CachedNetworkImage] width: ${rect.width}, height: ${rect.height}";
@@ -51,12 +52,14 @@ class _ImageSizePageState extends State<ImageSizePage> {
   }
 
   void _loadNetUrl1() async {
+    // 2.通过封装Image.network(url) 方法 异步获取返回对象Rect
     Rect rect = await WidgetUtil.getImageWH(url: netUrl1);
     netImgInfo1 = "[网络图片1] width: ${rect.width}, height: ${rect.height}";
     setState(() {});
   }
 
   void _loadLocalUrl1() async {
+    // 3.通过封装Image.asset方法，异步获取返回对象Rect
     Rect locImg1 = await WidgetUtil.getImageWH(localUrl: localImgUrl);
     localImgInfo1 =
         "[本地图片 ali_connors] width: ${locImg1.width}, height: ${locImg1.height}";
@@ -64,6 +67,7 @@ class _ImageSizePageState extends State<ImageSizePage> {
   }
 
   void _initAsync2() {
+    // 通过Future.catchError() 抓取图片异常
     WidgetUtil.getImageWHE(url: netUrlE).then((Rect rect) {
       netImgInfoE = "[网络图片2] width: ${rect.width}, height: ${rect.height}";
       setState(() {});
@@ -93,6 +97,7 @@ class _ImageSizePageState extends State<ImageSizePage> {
         centerTitle: true,
       ),
       body: new ListView(
+        // zqs_nice: ListView直接赋值有多少个children
         children: <Widget>[
           _buildItem(cacheImgInfo1),
           _buildItem(netImgInfo1),
