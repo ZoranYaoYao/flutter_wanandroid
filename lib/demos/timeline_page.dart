@@ -247,8 +247,10 @@ class _TimelinePageState extends State<TimelinePage> {
               margin: const EdgeInsets.all(10.0),
               child: new ListView.builder(
                   itemCount: dateTimeList.length,
+                  // itemBuilder 类比Adapter
                   itemBuilder: (BuildContext context, int index) {
                     int timeMillis = dateTimeList[index];
+                    // 通过DataTime 2个时间的对比，然后传递格式，进行返回需要的TimeLine
                     String timeline = TimelineUtil.format(timeMillis,
                         locTimeMillis: _locTime,
                         locale: _getLocale(),
