@@ -13,12 +13,17 @@ class HomePage extends StatelessWidget {
     if (ObjectUtil.isEmpty(list)) {
       return new Container(height: 0.0);
     }
+    // 宽高比组件
+    // https://juejin.im/post/5cefce50f265da1bc14b0db3
     return new AspectRatio(
       aspectRatio: 16.0 / 9.0,
+      // Swiper 滑动控件
       child: Swiper(
+        // 指示器位置
         indicatorAlignment: AlignmentDirectional.topEnd,
         circular: true,
         interval: const Duration(seconds: 5),
+        // 指示器
         indicator: NumberSwiperIndicator(),
         children: list.map((model) {
           return new InkWell(
@@ -50,9 +55,10 @@ class HomePage extends StatelessWidget {
       );
     }).toList();
     List<Widget> children = new List();
+    // 推荐项目条目
     children.add(new HeaderItem(
       leftIcon: Icons.book,
-      titleId: Ids.recRepos,
+      titleId: Ids.recRepos, // 推荐项目
       onTap: () {
         NavigatorUtil.pushTabPage(context,
             labelId: Ids.titleReposTree, titleId: Ids.titleReposTree);
@@ -108,6 +114,7 @@ class HomePage extends StatelessWidget {
       LogUtil.e("HomePage init......");
       isHomeInit = false;
       Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
+        // 请求刷新数据
         bloc.onRefresh(labelId: labelId);
         bloc.getHotRecItem();
         bloc.getVersion();
@@ -155,13 +162,16 @@ class HomePage extends StatelessWidget {
                         },
                       );
                     }),
+                // 构建banner组件
                 buildBanner(context, snapshot.data),
+                // 构建推荐项目
                 new StreamBuilder(
                     stream: bloc.recReposStream,
                     builder: (BuildContext context,
                         AsyncSnapshot<List<ReposModel>> snapshot) {
                       return buildRepos(context, snapshot.data);
                     }),
+                // 构建 推荐微信公众号
                 new StreamBuilder(
                     stream: bloc.recWxArticleStream,
                     builder: (BuildContext context,
@@ -175,6 +185,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
+// SwiperIndicator 滑动指示组件
 class NumberSwiperIndicator extends SwiperIndicator {
   @override
   Widget build(BuildContext context, int index, int itemCount) {

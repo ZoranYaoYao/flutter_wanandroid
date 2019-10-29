@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
 
+// 通用Item 封装LisTile
 class HeaderItem extends StatelessWidget {
   const HeaderItem(
       {this.margin,
