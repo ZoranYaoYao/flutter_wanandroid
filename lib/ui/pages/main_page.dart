@@ -20,6 +20,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LogUtil.e("MainPagess build......");
+    // DefaultTabController 组件，包含Tab控制
     return new DefaultTabController(
         length: _allPages.length,
         child: new Scaffold(
@@ -59,14 +60,14 @@ class MainPage extends StatelessWidget {
 class TabLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // TabBar组件
     return new TabBar(
       isScrollable: true,
       labelPadding: EdgeInsets.all(12.0),
       indicatorSize: TabBarIndicatorSize.label,
-      tabs: _allPages
-          .map((_Page page) =>
-              new Tab(text: IntlUtil.getString(context, page.labelId)))
-          .toList(),
+      tabs: _allPages.map((_Page page) =>
+          // Tab 组件
+          new Tab(text: IntlUtil.getString(context, page.labelId))).toList(),
     );
   }
 }
@@ -96,6 +97,7 @@ class TabBarViewLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LogUtil.e("TabBarViewLayout build.......");
+    // TabBarView组件
     return new TabBarView(
         children: _allPages.map((_Page page) {
       return buildTabView(context, page);

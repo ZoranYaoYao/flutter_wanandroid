@@ -27,7 +27,7 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
 
   static T of<T extends BlocBase>(BuildContext context) {
     final type = _typeOf<BlocProvider<T>>();
-    /// zqs_nice5: ancestorWidgetOfExactType 返回继承树上最近的type类型的一个Widget
+    /// zqs_nice5: ancestorWidgetOfExactType 返回继承树上最近的type类型的一个Widget，state改变不会注册回调
     BlocProvider<T> provider = context.ancestorWidgetOfExactType(type);
     return provider.bloc;
   }
