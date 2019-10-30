@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
 
+// TabPage viewPage页
 class ComListPage extends StatelessWidget {
   const ComListPage({Key key, this.labelId, this.cid}) : super(key: key);
   final String labelId;
@@ -26,6 +27,7 @@ class ComListPage extends StatelessWidget {
           if (loadStatus == LoadStatus.loading) {
             bloc.onRefresh(labelId: labelId, cid: cid);
           }
+          //
           return new RefreshScaffold(
             labelId: cid.toString(),
             loadStatus: loadStatus,

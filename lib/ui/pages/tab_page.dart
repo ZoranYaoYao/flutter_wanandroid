@@ -70,10 +70,12 @@ class TabPageState extends State<TabPage> {
                     child: new SizedBox(
                       height: 48.0,
                       width: double.infinity,
+                      // TabBar组件
                       child: new TabBar(
                         isScrollable: true,
                         //labelPadding: EdgeInsets.all(12.0),
                         indicatorSize: TabBarIndicatorSize.label,
+                        // Tab控件
                         tabs: snapshot.data
                             ?.map(
                                 (TreeModel model) => new Tab(text: model.name))
