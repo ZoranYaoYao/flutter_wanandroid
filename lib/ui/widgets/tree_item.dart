@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
-
+// 主页-体系Tab-item
 class TreeItem extends StatelessWidget {
   const TreeItem(this.model, {Key key}) : super(key: key);
 
@@ -9,6 +9,8 @@ class TreeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> chips = model.children.map<Widget>((TreeModel _model) {
+      /// Chip 碎片，标签组件
+      // https://www.jianshu.com/p/b345d45b1453
       return Chip(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         key: ValueKey<String>(_model.name),
@@ -54,6 +56,8 @@ class _ChipsTile extends StatelessWidget {
       ),
       Gaps.vGap10
     ];
+    /// Wrap组件 row水平方向自动折行
+    /// https://book.flutterchina.club/chapter4/wrap_and_flow.html
     cardChildren.add(Wrap(
         children: children.map((Widget chip) {
       return Padding(

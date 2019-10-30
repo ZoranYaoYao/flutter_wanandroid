@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/common/component_index.dart';
 
 bool isSystemInit = true;
 
+// 主页-体系Tab
 class SystemPage extends StatelessWidget {
   const SystemPage({Key key, this.labelId}) : super(key: key);
 
