@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/common/component_index.dart';
 
 bool isEventsInit = true;
 
+// 主页-动态tab
 class EventsPage extends StatelessWidget {
   const EventsPage({Key key, this.labelId}) : super(key: key);
 
@@ -12,6 +13,7 @@ class EventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     LogUtil.e("EventsPage build......");
     RefreshController _controller = new RefreshController();
+    // MainBloc -> 首页的viewMode
     final MainBloc bloc = BlocProvider.of<MainBloc>(context);
     bloc.homeEventStream.listen((event) {
       if (labelId == event.labelId) {
