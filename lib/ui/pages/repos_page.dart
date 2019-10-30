@@ -30,6 +30,7 @@ class ReposPage extends StatelessWidget {
         stream: bloc.reposStream,
         builder:
             (BuildContext context, AsyncSnapshot<List<ReposModel>> snapshot) {
+          // 刷新控件
           return new RefreshScaffold(
             labelId: labelId,
             loadStatus: Utils.getLoadStatus(snapshot.hasError, snapshot.data),
