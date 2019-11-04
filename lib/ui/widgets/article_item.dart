@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/common/component_index.dart';
 
 // 收藏列表-文章Item
 // 主页-动态item
+//
 class ArticleItem extends StatelessWidget {
   const ArticleItem(
       this.model, {
